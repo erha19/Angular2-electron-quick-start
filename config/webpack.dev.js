@@ -3,6 +3,7 @@
  */
 
 const helpers = require('./helpers');
+const config = require('./config');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
 
@@ -12,6 +13,8 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 /**
  * Webpack Constants
@@ -75,6 +78,20 @@ module.exports = function (options) {
           }
         }
       }),
+       /*
+        * Plugin: HtmlWebpackPlugin
+        * Description: Simplifies creation of HTML files to serve your webpack bundles.
+        * This is especially useful for webpack bundles that include a hash in the filename
+        * which changes every compilation.
+        *
+        * See: https://github.com/ampedandwired/html-webpack-plugin
+        */
+        new HtmlWebpackPlugin({
+            template: 'src/app/index.html',
+            title: config.title,
+            chunksSortMode: 'dependency',
+            inject: 'body'
+        }),
 
     ],
 

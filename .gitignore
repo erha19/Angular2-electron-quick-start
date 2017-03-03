@@ -46,6 +46,11 @@ Thumbs.db
 __build__/**
 .webpack.json
 
+
+# public #
+/public
+
+
 #doc
 /doc
 

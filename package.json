@@ -7,22 +7,24 @@
     "watch:dev": "webpack webpack.config.js --progress --profile",
     "build": "npm run build:dev",
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile",
+    "build:prod": "webpack --config config/webpack.prod.js --progress --profile",
     "package": "node package.js",
     "package-all": "npm run package -- --all",
     "electron": "electron dist",
     "webpack-test": "webpack --config webpack.test.js --progress --profile",
     "test": "karma start",
     "start": "npm run build:dev && electron dist",
+    "start:prod": "npm run build:prod && electron publish",
     "watch": "nodemon --exec \"npm run start\" --ext js,css --ignore build/ --ignore dist/"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/joaogarin/angular2-electron.git"
+    "url": "https://github.com/simplefatty/Angular2-electron-quick-start.git"
   },
-  "author": "joaogarin <github@joaogarin.com>",
+  "author": "simplefatty<github@simplefatty.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/joaogarin/angular2-electron/issues"
+    "url": "https://github.com/simplefatty/Angular2-electron-quick-start/issues"
   },
   "homepage": "",
   "dependencies": {
@@ -97,6 +99,7 @@
     "webpack": "2.1.0-beta.25",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "^2.1.0-beta.9",
+    "webpack-md5-hash": "0.0.5",
     "webpack-merge": "^3.0.0"
   },
   "engines": {
