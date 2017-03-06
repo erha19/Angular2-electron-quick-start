@@ -1,5 +1,10 @@
 # Angular 2 electron app featuring webpack
 
+[![Build Status](https://travis-ci.org/simplefatty/Angular2-electron-quick-start.svg?branch=master)](https://travis-ci.org/simplefatty/Angular2-electron-quick-start)
+[![dependcy](https://david-dm.org/simplefatty/Angular2-electron-quick-start.svg)](https://david-dm.org/simplefatty/Angular2-electron-quick-start)
+[![dev dependcy](https://david-dm.org/simplefatty/Angular2-electron-quick-start/dev-status.svg)](https://david-dm.org/simplefatty/Angular2-electron-quick-start?type=dev)
+
+==================
 ## Run the example
 
 ```bash
