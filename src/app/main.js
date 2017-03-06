@@ -21,8 +21,10 @@ if(app !== undefined){
     // Tell Electron where to load the entry point from
     mainWindow.loadURL('file://' + __dirname + '/index.html');
 
-    // Open the DevTools.
-    mainWindow.webContents.openDevTools();
+    // Open the DevTools when NODE_ENV == 'development'
+    if(process.env.NODE_ENV == 'development'){
+      mainWindow.webContents.openDevTools();
+    }
 
     // Clear out the main window when the app is closed
     mainWindow.on('closed', () => {

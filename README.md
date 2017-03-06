@@ -12,6 +12,22 @@ $ npm install
 $ npm start
 ```
 
+You should create a `config.json` in the `src/app` floder.like:
+```
+{
+    "github": {
+        "client_id": "",
+        "client_secret": "",
+        "scopes": [
+            "user:email",
+            "notifications"
+        ]
+    }
+}
+```
+
+* When you use Linux or OSX , you need to change the command in `package.json`,just change `set` to `export`.
+
 ## Packaging
 
 The app has support for packaging using 'electron-packager'
