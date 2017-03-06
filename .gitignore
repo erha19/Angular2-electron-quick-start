@@ -50,6 +50,9 @@ __build__/**
 # public #
 /public
 
+# publish #
+publish
+
 
 #doc
 /doc
