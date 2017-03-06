@@ -1,8 +1,4 @@
-import {
-    async,
-    inject,
-    TestBed,
-} from '@angular/core/testing';
+import { async, inject, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { HomeComponent } from './home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

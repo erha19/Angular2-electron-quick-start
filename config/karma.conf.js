@@ -3,7 +3,7 @@
  */
 
 module.exports = function(config) {
-  var testWebpackConfig = require('./webpack.test.js');
+  var testWebpackConfig =  require('./webpack.test.js')({env: 'test'});
 
   config.set({
 
@@ -77,7 +77,7 @@ module.exports = function(config) {
      */
     browsers: [
       // 'Chrome',
-      'PhantomJS'
+      'PhantomJS2'
     ],
 
     /*

@@ -35,8 +35,8 @@ export class HomeComponent implements OnInit {
   }
   doNotify() {
     let message = {
-      title: "Content-Image Notification",
-      body: "Short message plus a custom content image",
+      title: 'Content-Image Notification',
+      body: 'Short message plus a custom content image',
     };
     new Notification(message.title, message);
   }
