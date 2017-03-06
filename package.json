@@ -13,8 +13,8 @@
     "webpack-test": "webpack --config webpack.test.js --progress --profile",
     "test": "karma start",
     "watch:test": "npm run test -- --auto-watch --no-single-run",
-    "start": "npm run build:dev && set NODE_ENV=development && electron dist",
-    "start:prod": "npm run build:prod && set NODE_ENV=production && electron publish",
+    "start": "npm run build:dev && set NODE_ENV=development&& electron dist",
+    "start:prod": "npm run build:prod && set NODE_ENV=production&& electron publish",
     "watch": "nodemon --exec \"npm run start\" --ext js,css --ignore build/ --ignore dist/"
   },
   "repository": {

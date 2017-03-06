@@ -25,7 +25,7 @@ if(app !== undefined){
     if(process.env.NODE_ENV == 'development'){
       mainWindow.webContents.openDevTools();
     }
-
+    
     // Clear out the main window when the app is closed
     mainWindow.on('closed', () => {
       mainWindow = null;
