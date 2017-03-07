@@ -1,7 +1,6 @@
 /**
- * @author: @AngularClass
+ * @author: @simplefatty
  */
-
 const helpers = require('./helpers');
 const config = require('./config');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
@@ -20,12 +19,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+const HMR = helpers.hasProcessFlag('hot');
 
 /**
  * Webpack configuration
  */
 module.exports = function (options) {
-  return webpackMerge(commonConfig({env: ENV}), {
+  return webpackMerge(commonConfig({ env: ENV }), {
 
     /**
      * Developer tool to enhance debugging
@@ -42,20 +42,41 @@ module.exports = function (options) {
      */
     // Config for our build files
     output: {
-        path: helpers.rootNode('dist'),
-        filename: '[name].js',
-        sourceMapFilename: '[name].map',
-        chunkFilename: '[id].chunk.js'
+      path: helpers.rootNode('dist'),
+      filename: '[name].bundle.js',
+      sourceMapFilename: '[name].map',
+      chunkFilename: '[id].chunk.js',
+      library: 'ac_[name]',
+      libraryTarget: 'var'
     },
 
     plugins: [
+      /**
+       * Plugin: DefinePlugin
+       * Description: Define free variables.
+       * Useful for having development builds with debug logging or adding global constants.
+       *
+       * Environment helpers
+       *
+       * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+       */
+      // NOTE: when adding more properties, make sure you include them in custom-typings.d.ts
+      // new DefinePlugin({
+      //   'ENV': JSON.stringify(ENV),
+      //   'HMR': HMR,
+      //   'process.env': {
+      //     'ENV': JSON.stringify(ENV),
+      //     'NODE_ENV': JSON.stringify(ENV),
+      //     'HMR': HMR,
+      //   }
+      // }),
       /**
        * Plugin: NamedModulesPlugin (experimental)
        * Description: Uses file names as module name.
        *
        * See: https://github.com/webpack/webpack/commit/a04ffb928365b19feb75087c63f13cadfc08e1eb
        */
-    //   new NamedModulesPlugin(),
+      //   new NamedModulesPlugin(),
 
       /**
        * Plugin LoaderOptionsPlugin (experimental)
@@ -78,24 +99,41 @@ module.exports = function (options) {
           }
         }
       }),
-       /*
-        * Plugin: HtmlWebpackPlugin
-        * Description: Simplifies creation of HTML files to serve your webpack bundles.
-        * This is especially useful for webpack bundles that include a hash in the filename
-        * which changes every compilation.
-        *
-        * See: https://github.com/ampedandwired/html-webpack-plugin
-        */
-        new HtmlWebpackPlugin({
-            template: 'src/app/index.html',
-            title: config.title,
-            chunksSortMode: 'dependency',
-            inject: 'body'
-        }),
+      /*
+       * Plugin: HtmlWebpackPlugin
+       * Description: Simplifies creation of HTML files to serve your webpack bundles.
+       * This is especially useful for webpack bundles that include a hash in the filename
+       * which changes every compilation.
+       *
+       * See: https://github.com/ampedandwired/html-webpack-plugin
+       */
+      new HtmlWebpackPlugin({
+        template: 'src/app/index.html',
+        title: config.metadata.title,
+        chunksSortMode: 'dependency',
+        inject: 'body'
+      }),
 
     ],
 
-
+    /**
+     * Webpack Development Server configuration
+     * Description: The webpack-dev-server is a little node.js Express server.
+     * The server emits information about the compilation state to the client,
+     * which reacts to those events.
+     *
+     * See: https://webpack.github.io/docs/webpack-dev-server.html
+     */
+    devServer: {
+      port: config.metadata.port,
+      host: config.metadata.host,
+      historyApiFallback: true,
+      watchOptions: {
+        aggregateTimeout: 300,
+        poll: 1000
+      },
+      outputPath: helpers.rootNode('dist')
+    },
     /*
      * Include polyfills or mocks for various node stuff
      * Description: Node configuration

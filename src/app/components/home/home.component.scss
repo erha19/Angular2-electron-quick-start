@@ -1,10 +1,91 @@
-div {
-  & > input {
-    color: blue;
-  }
+.eo-home-container {
+    background-color: #eaeaea;
+}
+
+.eo-right-content {
+    margin-left: 280px;
+    overflow: auto;
+    bottom: 78px;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    z-index: -20;
+    left: 0;
+    background-color: #eaeaea;
+}
+
+.eo-left-content {
+    width: 280px;
+    position: fixed;
+    left: 0;
+    top: 50px;
+    bottom: 0;
+    overflow: hidden;
+    background: #1a1a1a;
+}
+
+.eo-h-divider {
+    left: 280px;
+    padding-left: 1px;
+    text-align: left;
+    top: 50px;
+    bottom: 0;
+    width: 4px;
+    padding-left: 3px;
+    text-align: center;
+    position: fixed;
+    cursor: ew-resize;
+    background-color: #eaeaea;
+    .line {
+        border-left: solid #aaa 1px;
+        width: 1px;
+        height: 100%;
+    }
+}
+
+.eo-right-content {
+    margin-left: 280px;
+    overflow: auto;
+    bottom: 78px;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    z-index: -20;
+    left: 0;
+    background-color: #eaeaea;
+}
+
+.eo-v-divider {
+    left: 288px;
+    right: 0;
+    position: fixed;
+    cursor: ns-resize;
+    z-index: -10;
+    background: #eaeaea;
+    padding: 0;
+    bottom: 246px;
+    .line {
+        border-bottom: solid #aaa 1px;
+        margin: 0 0 3px 0;
+        padding: 2px 0 0 0;
+        width: 100%;
+        height: 1px;
+    }
+}
+
+.eo-pane {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 281px;
+    min-height: 0 !important;
+    height: 240px;
+    padding: 3px 10px 5px 0 !important;
+    background-color: #f0f0f0;
+    z-index: -10;
 }
 
 // Fix for warning with electron - see https://github.com/electron/electron/issues/4420
 ::selection {
-  background:rgba(255, 255, 125, 0.99);
+    background: rgba(255, 255, 125, 0.99);
 }

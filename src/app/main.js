@@ -1,11 +1,11 @@
 /**
  * Include our app
  */
-const {app,BrowserWindow} = require('electron');
+const { app, BrowserWindow } = require('electron');
 // browser-window creates a native window
 let mainWindow = null;
 
-if(app !== undefined){
+if (app !== undefined) {
   app.on('window-all-closed', () => {
     // On macOS it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
@@ -22,10 +22,10 @@ if(app !== undefined){
     mainWindow.loadURL('file://' + __dirname + '/index.html');
 
     // Open the DevTools when NODE_ENV == 'development'
-    if(process.env.NODE_ENV == 'development'){
-      mainWindow.webContents.openDevTools();
+    if (process.env.NODE_ENV == 'development') {
+      // mainWindow.webContents.openDevTools();
     }
-    
+
     // Clear out the main window when the app is closed
     mainWindow.on('closed', () => {
       mainWindow = null;

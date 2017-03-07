@@ -11,8 +11,10 @@ const AssetsPlugin = require('assets-webpack-plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-
-
+/*
+ * Webpack Constants
+ */
+const HMR = helpers.hasProcessFlag('hot');
 /*
  * Webpack Configuration
  */
@@ -20,12 +22,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = function (options) {
     isProd = options.env === 'production';
-    
-    return  {
+
+    return {
         /**
          * Target Electron
          */
-        target:'electron-renderer',
+        target: 'electron-renderer',
         // for faster builds use 'eval'
         devtool: 'source-map',
         // cache: false,
@@ -63,7 +65,11 @@ module.exports = function (options) {
                 // Support for .ts files.
                 {
                     test: /\.ts$/,
-                    loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
+                    loaders: [
+                        '@angularclass/hmr-loader?pretty=' + !isProd + '&prod=' + isProd,
+                        'awesome-typescript-loader',
+                        'angular2-template-loader'
+                    ],
                     exclude: [/\.(spec|e2e)\.ts$/]
                 },
 
@@ -127,8 +133,8 @@ module.exports = function (options) {
             // See: https://www.npmjs.com/package/copy-webpack-plugin
             new CopyWebpackPlugin([
                 { from: 'src/assets', to: 'assets' },
-                {from:'src/app/package.json',to:isProd?helpers.rootNode('publish'):helpers.rootNode('dist')},
-                {from:'src/app/main.js',to:isProd?helpers.rootNode('publish'):helpers.rootNode('dist')}
+                { from: 'src/app/package.json', to: isProd ? helpers.rootNode('publish') : helpers.rootNode('dist') },
+                { from: 'src/app/main.js', to: isProd ? helpers.rootNode('publish') : helpers.rootNode('dist') }
             ])
         ],
         /*

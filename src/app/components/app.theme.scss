@@ -24,3 +24,12 @@ $theme: mat-light-theme($primary, $accent);
 
   @include angular-material-theme($dark-theme);
 }
+//format
+*{
+  font-family: "Microsoft YaHei","Hiragino Sans GB","PingFang SC","SimHei","宋体","Arial Unicode MS";
+  font-size:14px;
+}
+body,html{
+  margin:0;
+  padding:0;
+}

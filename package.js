@@ -12,7 +12,7 @@ const arch = argv.arch || 'all';
 const platform = argv.platform || 'darwin';
 
 const DEFAULT_OPTS = {
-    dir: './build',
+    dir: './dist',
     name: appName,
     asar: shouldUseAsar,
     ignore: [
@@ -26,7 +26,8 @@ if (icon) {
 }
 
 pack(platform, arch, function done(err, appPath) {
-    console.log('there are some error when package the project,see',err);
+    console.log(platform, arch)
+    console.log('there are some error when package the project,see', err);
 });
 
 function pack(plat, arch, cb) {
