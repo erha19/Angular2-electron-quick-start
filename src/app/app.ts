@@ -16,7 +16,6 @@ import { authStore, authInitialState } from './store/auth.store';
 /**
  * Import our child components
  */
-import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AppComponent } from './components/app.component';
 
@@ -26,11 +25,6 @@ import { AppComponent } from './components/app.component';
 import { MaterialModule } from '@angular/material';
 
 import { routes } from './app.routes';
-
-/**
- * Import the authentication service to be injected into our component
- */
-import { Authentication } from './services/authentication';
 
 /*
  * provide('AppStore', { useValue: appStore }),
@@ -45,8 +39,7 @@ import { Authentication } from './services/authentication';
         RouterModule.forRoot(routes, { useHash: true }),
         StoreModule.provideStore({ authStore }, { authStore: authInitialState }),
     ],
-    providers: [Authentication],
-    declarations: [AppComponent, HomeComponent, LoginComponent],
+    declarations: [AppComponent, HomeComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
