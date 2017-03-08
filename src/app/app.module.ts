@@ -14,6 +14,10 @@ import { Store, StoreModule } from '@ngrx/store';
 import { authStore, authInitialState } from './store/auth.store';
 
 /**
+ * Import our ui components
+ */
+import { ActionButtonComponent } from './ui-components/action-button/action-button.component'
+/**
  * Import our child components
  */
 import { HomeComponent } from './components/home/home.component';
@@ -45,7 +49,14 @@ import { routes } from './app.routes';
         StoreModule.provideStore({ authStore }, { authStore: authInitialState }),
     ],
     providers: [],
-    declarations: [AppComponent, HomeComponent, NavbarComponent],
+    declarations: [
+        //ui-components
+        ActionButtonComponent,
+        //custom-components
+        AppComponent,
+        HomeComponent,
+        NavbarComponent
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

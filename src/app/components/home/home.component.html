@@ -13,43 +13,44 @@
           <span>Request</span>
         </div>
         <div class="pane-content">
-          <div class="service">
+          <div class="service form-horizontal">
             <div class="row">
-              <span class="cell protocol"> <i class="icon-lock"></i> <select class="input-small"><option value="http">HTTP</option><option value="https">HTTPS</option></select> </span>
+              <span class="cell protocol"> 
+                <eo-action-button [customerStyle]="{'min-width':'80px','text-align':'left'}" [buttonText]="defaultProtocol.text" type="default" [actions]="protocols" (actionClick)="onProtocolClick($event)"></eo-action-button>
+              </span>
               <span class="cell"> :// </span>
               <span class="cell-url"> 
-              <span class="expression-input input-append"><input type="text" class="gwt-TextBox url" id="gwt-uid-103" spellcheck="false" placeholder="type an URI">
+              <span class="expression-input input-append">
+                <input type="text" class="form-control" placeholder="type an URI">
                 <span class="add-on" title="Expression builder"><i class="icon-magic"></i>
                 </span>
               </span>
               </span>
-              <span class="cell"> <a href="javascript:;" class="editor-icon btn-link query-param-count-a" title="Open Query Editor"><i class="icon-question"></i> [0] </a> </span>
-              <span class="cell http-method"> <div><div class="btn-group input-append"><div class="input-append dropdown-toggle" data-toggle="dropdown"><input type="text" class="gwt-TextBox" style="width: 85px;"><span class="add-on"><a href="javascript:;" class="btn btn-small btn-link"><i class="icon-caret-down"></i></a></span></div>
-            <ul class="dropdown-menu">
-              <li><a href="javascript:;"><i></i> GET </a></li>
-              <li><a href="javascript:;"><i></i> POST </a></li>
-              <li><a href="javascript:;"><i></i> PUT </a></li>
-              <li><a href="javascript:;"><i></i> DELETE </a></li>
-              <li><a href="javascript:;"><i></i> HEAD </a></li>
-              <li><a href="javascript:;"><i></i> OPTIONS </a></li>
-              <li><a href="javascript:;"><i></i> PATCH </a></li>
-            </ul>
+              <span class="cell"> 
+                <a href="javascript:;" class="btn-link" title="Open Query Editor">
+                  ? [0] </a> 
+              </span>
+              <span class="cell http-method">
+              <eo-action-button [customerStyle]="{'min-width':'100px','text-align':'left'}" [buttonText]="defaultMethod.text" type="default" [actions]="methods" (actionClick)="onMethodClick($event)"></eo-action-button>
+                
+        </span>
+              <span class="cell send-button"> 
+                <eo-action-button [customerStyle]="{'min-width':'60px','text-align':'left'}" [buttonText]="'Send'" [actions]="[]" icon="glyphicon glyphicon-send"
+                    [type]="'primary'"
+    ></eo-action-button>
+              </span>
+            </div>
           </div>
         </div>
-        </span>
-        <span class="cell"> <div class="btn-group send"> <a href="javascript:;" class="btn btn-send btn-primary"><i class="icon-send"></i> Send </a> <a href="javascript:;" class="btn btn-primary btn-send dropdown-toggle" data-toggle="dropdown"><i class="icon-caret-down"></i>  </a> <ul class="dropdown-menu pull-right"> <li><a href="javascript:;"><i></i> Follow redirects </a></li> <li><a href="javascript:;"><i></i> Don't follow redirects </a></li> </ul> </div> </span>
       </div>
+
     </div>
+    <div class="eo-v-divider">
+      <div class="line"></div>
+    </div>
+
+    <section class="eo-pane">
+
+    </section>
   </div>
-</div>
-
-</div>
-<div class="eo-v-divider">
-  <div class="line"></div>
-</div>
-
-<section class="eo-pane">
-
-</section>
-</div>
 </div>
