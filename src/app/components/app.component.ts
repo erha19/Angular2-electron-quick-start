@@ -14,7 +14,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
     styleUrls: ['./app.theme.scss'],
     encapsulation: ViewEncapsulation.None,
     template: `
-    <div [class.m2app-dark]="isDarkTheme">
+    <div>
         <main>
             <router-outlet></router-outlet>
         </main>

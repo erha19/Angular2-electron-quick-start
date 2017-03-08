@@ -23,7 +23,7 @@ import { AppComponent } from './components/app.component';
 /**
  * Import material UI Components
  */
-import { MaterialModule } from '@angular/material';
+// import { MaterialModule } from '@angular/material';
 
 import { routes } from './app.routes';
 
@@ -40,7 +40,7 @@ import { routes } from './app.routes';
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
-        MaterialModule.forRoot(),
+        // MaterialModule.forRoot(),
         RouterModule.forRoot(routes, { useHash: true }),
         StoreModule.provideStore({ authStore }, { authStore: authInitialState }),
     ],

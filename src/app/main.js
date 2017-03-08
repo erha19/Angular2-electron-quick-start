@@ -23,7 +23,7 @@ if (app !== undefined) {
 
     // Open the DevTools when NODE_ENV == 'development'
     if (process.env.NODE_ENV == 'development') {
-      // mainWindow.webContents.openDevTools();
+      mainWindow.webContents.openDevTools();
     }
 
     // Clear out the main window when the app is closed

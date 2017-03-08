@@ -1,3 +1,18 @@
+.row {
+    margin-left: -20px;
+    &:before,
+    &:after {
+        display: table;
+        line-height: 0;
+        content: "";
+    }
+}
+
+.pane {
+    min-height: 70px;
+    padding: 15px 10px 10px 10px !important;
+}
+
 .eo-home-container {
     background-color: #eaeaea;
 }
@@ -51,8 +66,46 @@
     right: 0;
     top: 50px;
     z-index: -20;
+    min-width: 850px;
     left: 0;
     background-color: #eaeaea;
+    .request-pane {
+        background-color: #fafafa;
+        margin: 0 15px;
+        margin-top: 15px;
+        .pane-head {
+            font-size: 14px;
+            font-weight: 800;
+            margin: 0 0 7px 0;
+            color: #444;
+            text-transform: uppercase;
+            line-height: 20px;
+            padding: 0 0 5px 0;
+            span {
+                padding-left: 1px;
+            }
+        }
+        .pane-content {
+            .service {
+                display: table;
+                width: 100%;
+                .row {
+                    display: table-row;
+                }
+                .cell {
+                    display: table-cell;
+                    width: 1px;
+                    white-space: nowrap;
+                    padding: 0 2px 0 2px;
+                }
+                .cell-url {
+                    display: table-cell;
+                    white-space: nowrap;
+                    position: relative;
+                }
+            }
+        }
+    }
 }
 
 .eo-v-divider {
