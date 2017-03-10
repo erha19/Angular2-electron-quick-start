@@ -3,7 +3,6 @@
  */
 import { enableProdMode, NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,18 +13,22 @@ import { Store, StoreModule } from '@ngrx/store';
 import { authStore, authInitialState } from './store/auth.store';
 
 /**
+ * Import our ui components
+ */
+import { ActionButtonComponent } from './ui-components/action-button/action-button.component'
+/**
  * Import our child components
  */
 import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { AppComponent } from './components/app.component';
 
 /**
  * Import material UI Components
  */
-import { MaterialModule } from '@angular/material';
+// import { MaterialModule } from '@angular/material';
 
 import { routes } from './app.routes';
-
 /*
  * provide('AppStore', { useValue: appStore }),
  */
@@ -35,12 +38,19 @@ import { routes } from './app.routes';
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
-        MaterialModule.forRoot(),
+        // MaterialModule.forRoot(),
         RouterModule.forRoot(routes, { useHash: true }),
         StoreModule.provideStore({ authStore }, { authStore: authInitialState }),
     ],
-    declarations: [AppComponent, HomeComponent],
+    providers: [],
+    declarations: [
+        //ui-components
+        ActionButtonComponent,
+        //custom-components
+        AppComponent,
+        HomeComponent,
+        NavbarComponent
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
-platformBrowserDynamic().bootstrapModule(AppModule);

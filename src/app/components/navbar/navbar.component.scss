@@ -1,0 +1,18 @@
+.nav-container{
+    font-size: 14px;
+    display: flex;
+    height: 50px;
+    background-color: #333536;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    .nav-logo{
+        background: url('./assets/eolinker_sim.png') center center no-repeat;
+        width: 100px;
+        height:50px;
+        display: block;
+        margin-left:30px;
+    }
+}

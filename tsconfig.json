@@ -15,12 +15,12 @@
       "es6"
     ],
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "src/custom-typings.d.ts"
     ]
   },
   "exclude": [
-    "node_modules",
-    "dist"
+    "node_modules"
   ],
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,

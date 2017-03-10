@@ -1,6 +1,56 @@
-<div [formGroup]="messageForm">
-  <h1>{{messageForm.controls['messageText'].value}}</h1>
-  <input type="text" formControlName="messageText"/><br/>
-  <br/>
-  <button md-raised-button color="primary" (click)="doNotify();">NOTIFICATION</button>
+<div class="eo-home">
+  <eo-navbar></eo-navbar>
+  <div class="eo-home-container">
+    <div class="eo-left-content">
+
+    </div>
+    <div class="eo-h-divider">
+      <div class="line"></div>
+    </div>
+    <div class="eo-right-content">
+      <div class="request-pane pane">
+        <div class="pane-head">
+          <span>Request</span>
+        </div>
+        <div class="pane-content">
+          <div class="service form-horizontal">
+            <div class="row">
+              <span class="cell protocol"> 
+                <eo-action-button [customerStyle]="{'min-width':'80px','text-align':'left'}" [buttonText]="defaultProtocol.text" type="default" [actions]="protocols" (actionClick)="onProtocolClick($event)"></eo-action-button>
+              </span>
+              <span class="cell"> :// </span>
+              <span class="cell-url"> 
+              <span class="expression-input input-append">
+                <input type="text" class="form-control" placeholder="type an URI">
+                <span class="add-on" title="Expression builder"><i class="icon-magic"></i>
+                </span>
+              </span>
+              </span>
+              <span class="cell"> 
+                <a href="javascript:;" class="btn-link" title="Open Query Editor">
+                  ? [0] </a> 
+              </span>
+              <span class="cell http-method">
+              <eo-action-button [customerStyle]="{'min-width':'100px','text-align':'left'}" [buttonText]="defaultMethod.text" type="default" [actions]="methods" (actionClick)="onMethodClick($event)"></eo-action-button>
+                
+        </span>
+              <span class="cell send-button"> 
+                <eo-action-button [customerStyle]="{'min-width':'60px','text-align':'left'}" [buttonText]="'Send'" [actions]="[]" icon="glyphicon glyphicon-send"
+                    [type]="'primary'"
+    ></eo-action-button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="eo-v-divider">
+      <div class="line"></div>
+    </div>
+
+    <section class="eo-pane">
+
+    </section>
+  </div>
 </div>
