@@ -15,6 +15,7 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 
 /**
@@ -26,8 +27,7 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
  * Webpack configuration
  */
 module.exports = function (env) {
-  return webpackMerge(commonConfig({env: ENV}), {
-
+  return webpackMerge(commonConfig({ env: ENV }), {
     /**
      * Developer tool to enhance debugging
      *
@@ -49,7 +49,7 @@ module.exports = function (env) {
        * See: http://webpack.github.io/docs/configuration.html#output-path
        */
       path: helpers.rootNode('publish'),
-    
+
       /**
        * Specifies the name of each output file on disk.
        * IMPORTANT: You must not specify an absolute path here!
@@ -83,7 +83,7 @@ module.exports = function (env) {
      */
     plugins: [
 
-      
+
 
       /**
        * Plugin: DedupePlugin
@@ -93,7 +93,7 @@ module.exports = function (env) {
        * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
        * See: https://github.com/webpack/docs/wiki/optimization#deduplication
        */
-    //   new DedupePlugin(), // see: https://github.com/angular/angular-cli/issues/1587
+      //   new DedupePlugin(), // see: https://github.com/angular/angular-cli/issues/1587
 
       /**
        * Plugin: UglifyJsPlugin
@@ -161,27 +161,37 @@ module.exports = function (env) {
         *
         * See: https://github.com/ampedandwired/html-webpack-plugin
         */
-        new HtmlWebpackPlugin({
-            template: 'src/app/index.html',
-            title: config.metadata.title,
-            chunksSortMode: 'dependency',
-            inject: 'body',
-            minify:{
-                collapseWhitespace:true,
-                removeAttributeQuotes: false,
-                caseSensitive: true,
-                removeAttributeQuotes: true,
-                removeComments:true,
-                removeEmptyAttributes:true
-            }
-        }),
-        /**
-         * Plugin: WebpackMd5Hash
-         * Description: Plugin to replace a standard webpack chunkhash with md5.
-         *
-         * See: https://www.npmjs.com/package/webpack-md5-hash
-         */
-        // new WebpackMd5Hash(),
+      new HtmlWebpackPlugin({
+        template: 'src/app/index.html',
+        title: config.metadata.title,
+        chunksSortMode: 'dependency',
+        inject: 'head',
+        minify: {
+          collapseWhitespace: true,
+          removeAttributeQuotes: false,
+          caseSensitive: true,
+          removeAttributeQuotes: true,
+          removeComments: true,
+          removeEmptyAttributes: true
+        }
+      }),
+      /*
+       * Plugin: ScriptExtHtmlWebpackPlugin
+       * Description: Enhances html-webpack-plugin functionality
+       * with different deployment options for your scripts including:
+       *
+       * See: https://github.com/numical/script-ext-html-webpack-plugin
+       */
+      new ScriptExtHtmlWebpackPlugin({
+        defaultAttribute: 'defer'
+      }),
+      /**
+       * Plugin: WebpackMd5Hash
+       * Description: Plugin to replace a standard webpack chunkhash with md5.
+       *
+       * See: https://www.npmjs.com/package/webpack-md5-hash
+       */
+      // new WebpackMd5Hash(),
     ],
 
     /*

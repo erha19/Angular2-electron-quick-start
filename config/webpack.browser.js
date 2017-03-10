@@ -12,24 +12,19 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-
-
-/**
+/*
  * Webpack Constants
  */
 const ENV = process.env.NODE_ENV;
-
-/**
- * Webpack configuration
+/*
+ * Webpack Configuration
  */
+
 module.exports = function(options) {
     return webpackMerge(commonConfig({ env: ENV }), {
-        /**
-         * Target Electron
-         */
-        target: 'electron-renderer',
         /**
          * Developer tool to enhance debugging
          *
@@ -38,6 +33,11 @@ module.exports = function(options) {
          */
         devtool: 'cheap-module-source-map',
 
+        entry: {
+            'polyfills': './src/polyfills.ts',
+            'vendor': './src/vendor.ts',
+            'app': './src/main.browser.ts',
+        },
         /**
          * Options affecting the output of the compilation.
          *
@@ -52,15 +52,27 @@ module.exports = function(options) {
             library: 'ac_[name]',
             libraryTarget: 'var'
         },
-
         plugins: [
             /**
-             * Plugin: NamedModulesPlugin (experimental)
-             * Description: Uses file names as module name.
+             * Plugin: DefinePlugin
+             * Description: Define free variables.
+             * Useful for having development builds with debug logging or adding global constants.
              *
-             * See: https://github.com/webpack/webpack/commit/a04ffb928365b19feb75087c63f13cadfc08e1eb
+             * Environment helpers
+             *
+             * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
              */
-            new NamedModulesPlugin(),
+            // NOTE: when adding more properties, make sure you include them in custom-typings.d.ts
+            new DefinePlugin({
+                'ENV': JSON.stringify(config.metadata.ENV),
+                'HMR': config.metadata.HMR,
+                'process.env': {
+                    'ENV': JSON.stringify(config.metadata.ENV),
+                    'NODE_ENV': JSON.stringify(config.metadata.ENV),
+                    'HMR': config.metadata.HMR,
+                }
+            }),
+
             /**
              * Plugin: NamedModulesPlugin (experimental)
              * Description: Uses file names as module name.
@@ -115,8 +127,8 @@ module.exports = function(options) {
             new ScriptExtHtmlWebpackPlugin({
                 defaultAttribute: 'defer'
             }),
-        ],
 
+        ],
         /**
          * Webpack Development Server configuration
          * Description: The webpack-dev-server is a little node.js Express server.
@@ -151,4 +163,5 @@ module.exports = function(options) {
         }
 
     });
+
 }

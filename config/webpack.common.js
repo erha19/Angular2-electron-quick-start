@@ -11,23 +11,16 @@ const AssetsPlugin = require('assets-webpack-plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-/*
- * Webpack Constants
- */
-const HMR = helpers.hasProcessFlag('hot');
+
 /*
  * Webpack Configuration
  */
 
 
-module.exports = function (options) {
+module.exports = function(options) {
     isProd = options.env === 'production';
 
     return {
-        /**
-         * Target Electron
-         */
-        target: 'electron-renderer',
         // for faster builds use 'eval'
         devtool: 'source-map',
         // cache: false,
@@ -36,37 +29,36 @@ module.exports = function (options) {
         entry: {
             'polyfills': './src/polyfills.ts',
             'vendor': './src/vendor.ts',
-            'app': './src/app/app.ts',
+            'app': './src/app/index.ts',
         },
         /*
-        * Options affecting the resolving of modules.
-        *
-        * See: http://webpack.github.io/docs/configuration.html#resolve
-        */
+         * Options affecting the resolving of modules.
+         *
+         * See: http://webpack.github.io/docs/configuration.html#resolve
+         */
         resolve: {
             /*
-            * An array of extensions that should be used to resolve modules.
-            *
-            * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
-            */
+             * An array of extensions that should be used to resolve modules.
+             *
+             * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
+             */
             extensions: ['.ts', '.js', '.json', '.css', '.html'],
 
             // An array of directory names to be resolved to the current directory
-            modules: [helpers.root('src'), 'node_modules'],
+            modules: [helpers.rootNode('src'), 'node_modules'],
 
         },
         /*
-        * Options affecting the resolving of modules.
-        *
-        * See: http://webpack.github.io/docs/configuration.html#resolve
-        */
+         * Options affecting the resolving of modules.
+         *
+         * See: http://webpack.github.io/docs/configuration.html#resolve
+         */
         module: {
             rules: [
                 // Support for .ts files.
                 {
                     test: /\.ts$/,
                     loaders: [
-                        '@angularclass/hmr-loader?pretty=' + !isProd + '&prod=' + isProd,
                         'awesome-typescript-loader',
                         'angular2-template-loader'
                     ],
@@ -112,11 +104,11 @@ module.exports = function (options) {
             //     prettyPrint: true
             // }),
             /*
-            * Plugin: ForkCheckerPlugin
-            * Description: Do type checking in a separate process, so webpack don't need to wait.
-            *
-            * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
-            */
+             * Plugin: ForkCheckerPlugin
+             * Description: Do type checking in a separate process, so webpack don't need to wait.
+             *
+             * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
+             */
             // new ForkCheckerPlugin(),
             // Plugin: CommonsChunkPlugin
             // Description: Shares common code between the pages.
@@ -138,11 +130,11 @@ module.exports = function (options) {
             ])
         ],
         /*
-        * Include polyfills or mocks for various node stuff
-        * Description: Node configuration
-        *
-        * See: https://webpack.github.io/docs/configuration.html#node
-        */
+         * Include polyfills or mocks for various node stuff
+         * Description: Node configuration
+         *
+         * See: https://webpack.github.io/docs/configuration.html#node
+         */
         node: {
             global: true,
             progress: false,
@@ -153,5 +145,3 @@ module.exports = function (options) {
         }
     };
 }
-
-
