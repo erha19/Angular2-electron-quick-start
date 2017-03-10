@@ -11,6 +11,11 @@ $ npm install
 $ npm start
 ```
 
+## Run on the browser.
+
+If you want to design you page on the chrome,you can run `npm run server:dev` to start a develop server
+
+
 * When you use Linux or OSX , you need to change the command in `package.json`,just change `set` to `export`.
 
 ## Packaging
