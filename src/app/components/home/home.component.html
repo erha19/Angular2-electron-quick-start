@@ -1,56 +1,184 @@
 <div class="eo-home">
-  <eo-navbar></eo-navbar>
-  <div class="eo-home-container">
-    <div class="eo-left-content">
+    <eo-navbar></eo-navbar>
+    <div class="eo-home-container">
+        <div class="eo-left-content">
 
-    </div>
-    <div class="eo-h-divider">
-      <div class="line"></div>
-    </div>
-    <div class="eo-right-content">
-      <div class="request-pane pane">
-        <div class="pane-head">
-          <span>Request</span>
         </div>
-        <div class="pane-content">
-          <div class="service form-horizontal">
-            <div class="row">
-              <span class="cell protocol"> 
+        <div class="eo-h-divider">
+            <div class="line"></div>
+        </div>
+        <div class="eo-right-content">
+            <div class="request-pane pane">
+                <div class="pane-head">
+                    <span>Request</span>
+                </div>
+                <div class="pane-content">
+                    <div class="service form-horizontal">
+                        <div class="row">
+                            <span class="cell protocol"> 
                 <eo-action-button [customerStyle]="{'min-width':'80px','text-align':'left'}" [buttonText]="defaultProtocol.text" type="default" [actions]="protocols" (actionClick)="onProtocolClick($event)"></eo-action-button>
               </span>
-              <span class="cell"> :// </span>
-              <span class="cell-url"> 
+                            <span class="cell"> :// </span>
+                            <span class="cell-url"> 
               <span class="expression-input input-append">
                 <input type="text" class="form-control" placeholder="type an URI">
                 <span class="add-on" title="Expression builder"><i class="icon-magic"></i>
                 </span>
-              </span>
-              </span>
-              <span class="cell"> 
+                            </span>
+                            </span>
+                            <span class="cell"> 
                 <a href="javascript:;" class="btn-link" title="Open Query Editor">
                   ? [0] </a> 
               </span>
-              <span class="cell http-method">
+                            <span class="cell http-method">
               <eo-action-button [customerStyle]="{'min-width':'100px','text-align':'left'}" [buttonText]="defaultMethod.text" type="default" [actions]="methods" (actionClick)="onMethodClick($event)"></eo-action-button>
                 
         </span>
-              <span class="cell send-button"> 
+                            <span class="cell send-button"> 
                 <eo-action-button [customerStyle]="{'min-width':'60px','text-align':'left'}" [buttonText]="'Send'" [actions]="[]" icon="glyphicon glyphicon-send"
                     [type]="'primary'"
     ></eo-action-button>
               </span>
+                        </div>
+                    </div>
+                    <!--request data body-->
+                    <div class="request form-horizontal">
+                        <div class="headers">
+                            <div class="sub-label">
+                                <a href="http://tools.ietf.org/html/rfc7230#section-3.2" target="_blank">Headers</a>
+                            </div>
+                            <div class="h-container">
+                                <div class="headers-form">
+                                    <div class="headers-ui-editor">
+                                        <label for="" class="header-b">
+                                          <input type="checkbox" checked>
+                                        </label>
+                                        <span class="expression-input header-name">
+                                          <input type="text" class="form-control" placeholder="name">
+                                        </span>
+                                        <span>:</span>
+                                        <span class="expression-input header-value">
+                                          <input type="text" class="form-control" placeholder="value">
+                                        </span>
+                                        <a href="javascript:;" class="btn btn-sm btn-link" title="Remove"><i class="glyphicon glyphicon-remove"></i></a>
+                                    </div>
+                                    <div class="btn-group buttons"><a href="javascript:;" class="btn btn-link btn-sm" title="Add New Header"><i class="glyphicon glyphicon-plus"></i></a><a href="javascript:;" class="btn btn-sm btn-link" title="Sort Headers"><i class="glyphicon glyphicon-sort"></i></a></div>
+                                    <div class="btn-group set-auth-link"><a href="javascript:;" class="btn btn-link"><i class="glyphicon glyphicon-wrench"></i> set an authorization </a></div>
+                                    <div class="btn-group buttons-r"><a href="javascript:;" class="btn btn-sm btn-link" title="Remove All Headers"><i class="glyphicon glyphicon-trash"></i></a></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--request body content-->
+                        <div class="body body-content">
+                            <div class="sub-label"> <a href="http://tools.ietf.org/html/rfc7230#section-3.3" target="_blank">Body</a> </div>
+                            <div class="b-container">
+                                <table class="html-form-body form-horizontal">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label class="checkbox" for="gwt-uid-882" title="Enable/Disable">
+                                <input type="checkbox" value="on" id="gwt-uid-882" tabindex="0" checked="">
+                                <span></span>
+                                </label>
+                                            </td>
+                                            <td>
+                                                <span class="expression-input input-append">
+                                  <input type="text" class="form-control item-name" id="gwt-uid-883" placeholder="name">
+                                  <span class="add-on" title="Expression builder">
+                                    <i class="icon-magic"></i>
+                                    </span>
+                                                </span>
+                                            </td>
+                                            <td>[</td>
+                                            <td><select class="form-control item-type" title="Item Type">
+                                  <option value="Text">Text</option>
+                                  <option value="File">File</option></select>
+                                            </td>
+                                            <td>]</td>
+                                            <td>=</td>
+                                            <td class="value">
+                                                <div class="file-selector item-value file-value">
+                                                    <button class="btn btn-default btn-sm">
+                                      <label for="gwt-uid-885">Choose a file...</label>
+                                      </button>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="javascript:;" class="btn btn-link btn-sm" title="Remove">
+                                                    <i class="glyphicon glyphicon-remove"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>
+                                                <label class="checkbox" for="gwt-uid-886" title="Enable/Disable">
+                                    <input type="checkbox" value="on"  tabindex="0" checked="">
+                                    <span></span>
+                                    </label>
+                                            </td>
+                                            <td>
+                                                <span class="expression-input input-append">
+                                      <input type="text" class="form-control item-name"  placeholder="name">
+                                      <span class="add-on" title="Expression builder">
+                                        <i class="icon-magic"></i>
+                                        </span></span>
+                                            </td>
+                                            <td>[</td>
+                                            <td>
+                                                <select class="form-control item-type" title="Item Type">
+                                      <option value="Text">Text</option>
+                                      <option value="File">File</option>
+                                    </select>
+                                            </td>
+                                            <td>]</td>
+                                            <td>=</td>
+                                            <td class="value">
+                                                <span class="expression-input input-append">
+                                      <input type="text" class="form-control item-value"  placeholder="text">
+                                      <span class="add-on" title="Expression builder">
+                                        <i class="icon-magic"></i>
+                                        </span></span>
+                                            </td>
+                                            <td>
+                                                <a href="javascript:;" class="btn btn-link btn-sm" title="Remove">
+                                                    <i class="glyphicon glyphicon-remove"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="btn-group html-btn-group-r">
+                                    <a href="javascript:;" class="btn btn-small btn-link" title="Remove All Items">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>
+                                </div>
+                                <div class="btn-group html-btn-group">
+                                    <a href="javascript:;" class="btn btn-add btn-small btn-link" title="Add New Item">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                    </a>
+                                    <a href="javascript:;" class="btn btn-sort btn-small btn-link" title="Sort Items">
+                                        <i class="glyphicon glyphicon-sort"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
             </div>
-          </div>
+
         </div>
-      </div>
+        <div class="eo-v-divider">
+            <div class="line"></div>
+        </div>
 
+        <section class="eo-pane">
+
+        </section>
     </div>
-    <div class="eo-v-divider">
-      <div class="line"></div>
-    </div>
-
-    <section class="eo-pane">
-
-    </section>
-  </div>
 </div>
