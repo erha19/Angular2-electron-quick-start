@@ -1,13 +1,16 @@
 <div class="eo-home">
     <eo-navbar></eo-navbar>
     <div class="eo-home-container">
-        <div class="eo-left-content">
+        <eo-drag-pane [direction]="'h'">
+            <section>
+                <div class="eo-left-content">
 
-        </div>
-        <div class="eo-h-divider">
-            <div class="line"></div>
-        </div>
+                </div>
+            </section>
+        </eo-drag-pane>
         <div class="eo-right-content">
+
+            <!--request-pane-->
             <div class="request-pane pane">
                 <div class="pane-head">
                     <span>Request</span>
@@ -165,20 +168,85 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
 
                 </div>
             </div>
 
-        </div>
-        <div class="eo-v-divider">
-            <div class="line"></div>
-        </div>
 
-        <section class="eo-pane">
+            <!--response body-->
+            <div class="response-pane pane clearfix">
+                <div class="pane-head-ng">
+                    <span>Response</span>
+                    <div class="response-time">
+                        <span class="el-time">
+                                        <a href="http://tools.ietf.org/html/rfc7234" target="_blank" class="remote-cache">
+                                        Cache Detected
+                                        </a>  -  
+                                    <span title="1.1s">Elapsed Time: 1.1s</span></span>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="response-status-line response-status-line-error">
+                        <div class="status">
+                            <a href="http://tools.ietf.org/html/rfc7231#section-6.5.6" target="_blank">406 NOT ACCEPTABLE</a>
+                        </div>
+                    </div>
 
-        </section>
+                    <div class="h-container">
+                        <div class="headers">
+                            <div class="sub-label"> <a href="http://tools.ietf.org/html/rfc7230#section-3.2" target="_blank">Headers</a> </div>
+
+                            <div class="h-container">
+                                <table class="form-headers">
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="http://www.w3.org/TR/cors/#access-control-allow-credentials-response-header" target="_blank" class="header-link"><span title="Access-Control-Allow-Credentials">Access-Control-Allow-Credentials:</span></a></td>
+                                            <td></td>
+                                            <td><span title="true">true</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <a href="javascript:;" class="btn sent-headers btn-link"><i class="caret"></i> complete request headers </a>
+                                <!--hidden form headers-->
+                                <div>
+                                    <table class="form-headers">
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="http://tools.ietf.org/html/rfc7231#section-5.3.2" target="_blank" class="header-link"><span title="Accept">Accept:</span></a></td>
+                                                <td></td>
+                                                <td><a class="gwt-Anchor" title="*/*">*/*</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="http://tools.ietf.org/html/rfc7231#section-5.3.5" target="_blank" class="header-link"><span title="Accept-Language">Accept-Language:</span></a></td>
+                                                <td></td>
+                                                <td><a class="gwt-Anchor" title="zh-CN,zh;q=0.8">zh-CN,zh;q=0.8</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="sent-headers-note">Note: <a href="http://www.w3.org/TR/XMLHttpRequest/#dom-xmlhttprequest-setrequestheader" target="_blank">XHR </a> automatically adds headers like Accept, Accept-Language, Cookie, User-Agent, etc. </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="body">
+                        <div class="sub-label"> <a href="http://tools.ietf.org/html/rfc7230#section-3.3" target="_blank">Body</a> </div>
+                        <div class="response-body">
+                            <div class="unknown">No Content</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <eo-drag-pane [direction]="'v'" (dragPaneHResize)="ondragPaneResize($event)">
+            <section>
+                123456
+            </section>
+        </eo-drag-pane>
     </div>
 </div>

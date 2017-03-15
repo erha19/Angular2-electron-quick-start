@@ -9,7 +9,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/appState.store';
 
-import * as path from 'path';
 
 import { ActionItem } from '../../ui-components/action-button/action-item.model';
 
@@ -59,21 +58,16 @@ export class HomeComponent implements OnInit {
     constructor(public store: Store<AppState>) { }
 
     ngOnInit() {
-        let state = this.store.select('authStore').subscribe((state: any) => {
-            this.name = state.username;
-        });
+
     }
-    doNotify() {
-        let message = {
-            title: 'Content-Image Notification',
-            body: 'Short message plus a custom content image',
-        };
-        new Notification(message.title, message);
-    }
+
     onMethodClick(item: ActionItem) {
         this.defaultMethod = item;
     }
     onProtocolClick(item: ActionItem) {
         this.defaultProtocol = item;
+    }
+    ondragPaneResize(e) {
+        console.log(e);
     }
 }

@@ -23,9 +23,7 @@ export class NavbarComponent implements OnInit {
     constructor(public store: Store<AppState>) { }
 
     ngOnInit() {
-        let state = this.store.select('authStore').subscribe((state: any) => {
-            this.name = state.username;
-        });
+
     }
 
 }

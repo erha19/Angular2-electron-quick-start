@@ -61,6 +61,7 @@
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
+    "@ngrx/store-devtools": "^3.2.3",
     "@types/hammerjs": "^2.0.33",
     "@types/jasmine": "^2.2.34",
     "@types/moment-timezone": "^0.2.32",

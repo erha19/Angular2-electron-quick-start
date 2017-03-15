@@ -1,3 +1,5 @@
+// import redux dev-tool
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 /*
  * Angular Modules
  */
@@ -10,12 +12,13 @@ import { HttpModule } from '@angular/http';
 
 // Setup redux with ngrx
 import { Store, StoreModule } from '@ngrx/store';
-import { authStore, authInitialState } from './store/auth.store';
+import { layoutStore, InitialState } from './reducers';
 
 /**
  * Import our ui components
  */
 import { ActionButtonComponent } from './ui-components/action-button/action-button.component'
+import { DragPaneComponent } from './ui-components/drag-pane/drag-pane.component'
 /**
  * Import our child components
  */
@@ -45,12 +48,16 @@ import { routes } from './app.routes';
         HttpModule,
         // MaterialModule.forRoot(),
         RouterModule.forRoot(routes, { useHash: true }),
-        StoreModule.provideStore({ authStore }, { authStore: authInitialState }),
+        StoreModule.provideStore({
+            layoutStore
+        }),
+        StoreDevtoolsModule.instrumentOnlyWithExtension()
     ],
     providers: [],
     declarations: [
         //ui-components
         ActionButtonComponent,
+        DragPaneComponent,
         //custom-components
         AppComponent,
         HomeComponent,
