@@ -99,7 +99,6 @@ export class HomeComponent implements OnInit {
         if (!this.draggingSign) {
             return;
         }
-        this.clearSlct();
         //release MouseEvent
         if ($event.clientX < 10 || $event.clientX > window.innerWidth - 10 || $event.clientY < 50 || $event.clientY > window.innerHeight - 10) {
             this.draggingSign = false;
@@ -126,8 +125,8 @@ export class HomeComponent implements OnInit {
         $event.preventDefault();
         this.draggingSign = false;
     }
-    clearSlct() {
-        "getSelection" in window ? window.getSelection().removeAllRanges() : document.selection.empty();
-    }
+    // clearSlct() {
+    //     "getSelection" in window ? window.getSelection().removeAllRanges() : document.selection.empty();
+    // }
 
 }
