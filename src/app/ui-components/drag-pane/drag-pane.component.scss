@@ -8,7 +8,7 @@
         background: #eaeaea;
         line-height: 20px;
         bottom: 246px;
-        background-color: #eaeaea;
+        padding-top: 5px;
         .line {
             border-bottom: solid #aaa 1px;
             margin: 0 0 3px 0;
@@ -22,11 +22,10 @@
         text-align: left;
         top: 50px;
         bottom: 0;
-        width: 8px;
+        width: 15px;
         padding-left: 3px;
         position: fixed;
         cursor: ew-resize;
-        background-color: #eaeaea;
         .line {
             border-left: solid #aaa 1px;
             width: 1px;
