@@ -16,12 +16,16 @@ const transformLayout = (direction: string, value: number, state: any) => {
     let result = Tools.px2num(state);
     if (direction == 'v') {
         let diff = value - result.bottomSideDividerPosition.bottom;
+        if (value > 792)
+            return result;
         result.bottomSideDividerPosition.bottom = value;
         result.bottomSidePanePosition.height = result.bottomSidePanePosition.height + diff;
         result.contentPanePosition.bottom = result.contentPanePosition.bottom + diff;
     }
     else if (direction == 'h') {
         let diff = value - result.leftSideDividerPosition.left;
+        if (value < 280)
+            return result;
         result.leftSideDividerPosition.left = value;
         result.leftSidePanePosition.width += diff;
         result.bottomSideDividerPosition.left += diff;

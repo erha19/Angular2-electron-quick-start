@@ -17,7 +17,7 @@ export class DragPaneComponent {
 
     onActionMouseDown($event?: any) {
         event.preventDefault();
-        this.dragging = $event.target.offsetParent;
+        this.dragging = $event.target;
         if (this.dragging) {
             switch (this.direction) {
                 case 'h':
