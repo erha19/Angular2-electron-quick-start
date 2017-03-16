@@ -34,15 +34,7 @@
             height: 100%;
         }
     }
-    .eo-pane {
+    .pane {
         position: fixed;
-        bottom: 0;
-        right: 0;
-        left: 281px;
-        min-height: 0 !important;
-        height: 240px;
-        padding: 3px 10px 5px 0 !important;
-        background-color: #f0f0f0;
-        z-index: -10;
     }
 }

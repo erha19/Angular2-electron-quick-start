@@ -17,7 +17,10 @@ export class LayoutService {
 
   //Inject the store to make sure state changes go through the store
   constructor(public store: Store<AppState>) {
-    //authenticate and call the store to update the token
+  }
+
+  calculatePosition(direction: string, value: number, diff: number) {
+
   }
 
 }

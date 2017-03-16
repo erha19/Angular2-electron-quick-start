@@ -1,14 +1,14 @@
 <div class="eo-home">
     <eo-navbar></eo-navbar>
     <div class="eo-home-container">
-        <eo-drag-pane [direction]="'h'">
+        <eo-drag-pane [direction]="'h'" (dragPaneHResize)="onDragPaneResize($event)" [customerPosition]="layoutData.leftSideDividerPosition">
             <section>
-                <div class="eo-left-content">
+                <div class="eo-left-content" [ngStyle]="layoutData.leftSidePanePosition">
 
                 </div>
             </section>
         </eo-drag-pane>
-        <div class="eo-right-content">
+        <div class="eo-right-content" [ngStyle]="layoutData.contentPanePosition">
 
             <!--request-pane-->
             <div class="request-pane pane">
@@ -243,9 +243,11 @@
             </div>
 
         </div>
-        <eo-drag-pane [direction]="'v'" (dragPaneHResize)="ondragPaneResize($event)">
+        <eo-drag-pane [direction]="'v'" (dragPaneHResize)="onDragPaneResize($event)" [customerPosition]="layoutData.bottomSideDividerPosition">
             <section>
-                123456
+                <div class="eo-pane" [ngStyle]="layoutData.bottomSidePanePosition">
+                    123456
+                </div>
             </section>
         </eo-drag-pane>
     </div>

@@ -12,8 +12,16 @@ import { AppState } from '../../store/appState.store';
 
 import { ActionItem } from '../../ui-components/action-button/action-item.model';
 
+import { LayoutService } from '../../services/layout.service';
+import { Tools } from '../../lib/util';
+
 // Allow us to use Notification API here.
 declare var Notification: any;
+interface dragData {
+    direction: string,
+    diff: number,
+    value: number
+}
 
 @Component({
     selector: 'ae-home',
@@ -55,10 +63,21 @@ export class HomeComponent implements OnInit {
         messageText: new FormControl('Angular2'),
     });
 
-    constructor(public store: Store<AppState>) { }
+    draggingSign: boolean = false;
+    draggingDiff: number;
+    draggingDirection: string;
+    //layout data
+    layoutData: any;
+
+    constructor(public store: Store<AppState>, private layout: LayoutService) {
+        this.layout = layout;
+    }
 
     ngOnInit() {
-
+        let state = this.store.select('layoutStore').subscribe((state: any) => {
+            this.layoutData = Tools.transformPositon(state);
+            console.log(this.layoutData)
+        });
     }
 
     onMethodClick(item: ActionItem) {
@@ -67,7 +86,23 @@ export class HomeComponent implements OnInit {
     onProtocolClick(item: ActionItem) {
         this.defaultProtocol = item;
     }
-    ondragPaneResize(e) {
-        console.log(e);
+    onDragPaneResize(data: dragData) {
+        this.draggingSign = true;
+        this.draggingDiff = data.diff;
+        this.draggingDirection = data.direction;
+        this.layout.calculatePosition(data.direction, data.value, this.draggingDiff)
+        console.log(data);
+    }
+    onDragPaneMouseMove($event?: MouseEvent) {
+        if (!this.draggingSign) {
+            return;
+        }
+        if (this.draggingDirection == 'v')
+            this.layout.calculatePosition(this.draggingDirection, window.innerHeight - $event.clientY - this.draggingDiff, this.draggingDiff)
+        else
+            this.layout.calculatePosition(this.draggingDirection, $event.clientX - this.draggingDiff, this.draggingDiff)
+    }
+    onDragPaneMouseUp($event?: MouseEvent) {
+        this.draggingSign = false;
     }
 }

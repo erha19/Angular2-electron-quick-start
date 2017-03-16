@@ -3,11 +3,21 @@
  */
 'use strict';
 let tools = {
-    namespace: function (name) {
-        return function (v?: string) {
+    namespace: (name?: string) => {
+        return (v?: string) => {
             return name + '-' + v;
         }
+    },
+    transformPositon: (obj: any) => {
+        let result = Object.assign({}, obj);
+        for (let i in result) {
+            for (let j in result[i]) {
+                result[i][j] = result[i][j] + 'px';
+            }
+        }
+        return result;
     }
 }
 
 export const NameSpace = tools.namespace.bind(tools);
+export const Tools = tools;

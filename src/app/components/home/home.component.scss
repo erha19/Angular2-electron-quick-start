@@ -17,18 +17,6 @@
             background-color: #eaeaea;
         }
         
-        .eo-right-content {
-            margin-left: 280px;
-            overflow: auto;
-            bottom: 240px;
-            position: fixed;
-            right: 0;
-            top: 50px;
-            z-index: -20;
-            left: 0;
-            background-color: #eaeaea;
-        }
-        
         .eo-left-content {
             width: 280px;
             position: fixed;
@@ -420,6 +408,18 @@
                     }
                 }
             }
+        }
+        
+        .eo-pane {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            left: 281px;
+            min-height: 0 !important;
+            height: 240px;
+            padding: 3px 10px 5px 0 !important;
+            background-color: #f0f0f0;
+            z-index: -10;
         }
         
         // Fix for warning with electron - see https://github.com/electron/electron/issues/4420

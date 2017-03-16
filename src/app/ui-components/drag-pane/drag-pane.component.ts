@@ -9,10 +9,10 @@ import { DOCUMENT } from '@angular/platform-browser';
 })
 export class DragPaneComponent {
     dragging: any;
-    postionStyle: any;
     diffX: number;
     diffY: number;
     @Input() direction: string;
+    @Input() customerPosition: any;
     @Output() dragPaneHResize = new EventEmitter<any>();
     @Output() dragPaneVResize = new EventEmitter<any>();
 
@@ -22,29 +22,29 @@ export class DragPaneComponent {
             switch (this.direction) {
                 case 'h':
                     this.diffX = $event.clientX - this.dragging ? this.dragging.offsetLeft : 0;
-                    this.dragPaneVResize.emit(null)
+                    this.dragPaneVResize.emit({ direction: 'h', value: window.innerWidth - $event.clientX - this.diffX, diff: this.diffX })
                     break;
                 case 'v':
                     this.diffY = this.dragging.offsetHeight - ($event.clientY - this.dragging.offsetTop);
-                    this.dragPaneHResize.emit(this.diffY)
+                    this.dragPaneHResize.emit({ direction: 'v', value: window.innerHeight - $event.clientY - this.diffY, diff: this.diffY })
                     break;
                 default: break;
             }
         }
     }
 
-    onActionMouseUp($event?: MouseEvent) {
-        this.dragging = null;
-        console.log('up')
+    // onActionMouseUp($event?: MouseEvent) {
+    //     this.dragging = null;
+    //     console.log('up')
 
-    }
-    onActionMouseMove($event?: MouseEvent) {
-        if (this.dragging !== null) {
-            this.postionStyle = {
-                bottom: window.innerHeight - $event.clientY - this.diffY + 'px'
-            }
-            console.log(this.postionStyle)
-        }
-    }
+    // }
+    // onActionMouseMove($event?: MouseEvent) {
+    //     if (this.dragging !== null) {
+    //         this.postionStyle = {
+    //             bottom: window.innerHeight - $event.clientY - this.diffY + 'px'
+    //         }
+    //         console.log(this.postionStyle)
+    //     }
+    // }
 
 }
