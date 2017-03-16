@@ -1,6 +1,7 @@
 /**
  * Import decorators and services from angular
  */
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 /**
@@ -76,7 +77,7 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         let state = this.store.select('layoutStore').subscribe((state: any) => {
             this.layoutData = Tools.transformPositon(state);
-            console.log(this.layoutData)
+            // this.ref.detectChanges();
         });
     }
 
@@ -87,22 +88,45 @@ export class HomeComponent implements OnInit {
         this.defaultProtocol = item;
     }
     onDragPaneResize(data: dragData) {
+        console.log(data)
         this.draggingSign = true;
         this.draggingDiff = data.diff;
         this.draggingDirection = data.direction;
         this.layout.calculatePosition(data.direction, data.value, this.draggingDiff)
-        console.log(data);
     }
     onDragPaneMouseMove($event?: MouseEvent) {
+        // $event.preventDefault();
         if (!this.draggingSign) {
             return;
         }
-        if (this.draggingDirection == 'v')
-            this.layout.calculatePosition(this.draggingDirection, window.innerHeight - $event.clientY - this.draggingDiff, this.draggingDiff)
-        else
-            this.layout.calculatePosition(this.draggingDirection, $event.clientX - this.draggingDiff, this.draggingDiff)
+        //release MouseEvent
+        if ($event.clientX < 10 || $event.clientX > window.innerWidth - 10 || $event.clientY < 50 || $event.clientY > window.innerHeight - 10) {
+            this.draggingSign = false;
+            return;
+        }
+        // console.log($event.clientX, $event.clientY)
+        if ($event.clientX < 280 || $event.clientY < window.innerHeight - 792) {
+            return;
+        }
+
+        if (this.draggingDirection == 'v') {
+            if (window.innerHeight - $event.clientY - this.draggingDiff >= 790) {
+                return;
+            } else {
+                this.layout.calculatePosition(this.draggingDirection, window.innerHeight - $event.clientY - this.draggingDiff, this.draggingDiff)
+            }
+
+        }
+        else {
+            if ($event.clientX - this.draggingDiff >= 960) {
+                return;
+            } else {
+                this.layout.calculatePosition(this.draggingDirection, $event.clientX - this.draggingDiff, this.draggingDiff)
+            }
+        }
     }
     onDragPaneMouseUp($event?: MouseEvent) {
+        $event.preventDefault();
         this.draggingSign = false;
     }
 }

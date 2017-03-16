@@ -1,4 +1,4 @@
-<div class="eo-home">
+<div class="eo-home" (mousemove)="onDragPaneMouseMove($event)" (mouseup)="onDragPaneMouseUp($event)">
     <eo-navbar></eo-navbar>
     <div class="eo-home-container">
         <eo-drag-pane [direction]="'h'" (dragPaneHResize)="onDragPaneResize($event)" [customerPosition]="layoutData.leftSideDividerPosition">
@@ -243,10 +243,10 @@
             </div>
 
         </div>
-        <eo-drag-pane [direction]="'v'" (dragPaneHResize)="onDragPaneResize($event)" [customerPosition]="layoutData.bottomSideDividerPosition">
+        <eo-drag-pane [direction]="'v'" (dragPaneVResize)="onDragPaneResize($event)" [customerPosition]="layoutData.bottomSideDividerPosition">
             <section>
                 <div class="eo-pane" [ngStyle]="layoutData.bottomSidePanePosition">
-                    123456
+                    Some Operation Tips!
                 </div>
             </section>
         </eo-drag-pane>

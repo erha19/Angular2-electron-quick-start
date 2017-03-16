@@ -27,6 +27,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AppComponent } from './components/app.component';
 
 /**
+ *  Import our providers
+ */
+import { LayoutService } from './services/layout.service';
+
+/**
  * Import material UI Components
  */
 // import { MaterialModule } from '@angular/material';
@@ -53,7 +58,7 @@ import { routes } from './app.routes';
         }),
         StoreDevtoolsModule.instrumentOnlyWithExtension()
     ],
-    providers: [],
+    providers: [LayoutService],
     declarations: [
         //ui-components
         ActionButtonComponent,

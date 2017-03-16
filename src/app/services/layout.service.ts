@@ -11,6 +11,7 @@ import { Http, Headers } from '@angular/http';
 import { Store } from '@ngrx/store';
 import { AppState } from './../store/appState.store';
 
+import { ERROR, Layout_H_Change, Layout_V_Change } from '../actions';
 
 @Injectable()
 export class LayoutService {
@@ -20,7 +21,22 @@ export class LayoutService {
   }
 
   calculatePosition(direction: string, value: number, diff: number) {
-
+    if (direction == 'v') {
+      this.store.dispatch({
+        type: Layout_V_Change,
+        payload: {
+          value: value
+        }
+      })
+    }
+    else {
+      this.store.dispatch({
+        type: Layout_H_Change,
+        payload: {
+          value: value
+        }
+      })
+    }
   }
 
 }

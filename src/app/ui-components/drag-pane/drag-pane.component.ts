@@ -1,11 +1,10 @@
-import { Component, OnInit, Input, EventEmitter, ChangeDetectionStrategy, HostListener, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, ChangeDetectorRef, ChangeDetectionStrategy, HostListener, Output } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
     selector: 'eo-drag-pane',
     templateUrl: './drag-pane.component.html',
-    styleUrls: ['drag-pane.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrls: ['drag-pane.component.scss']
 })
 export class DragPaneComponent {
     dragging: any;
@@ -17,34 +16,22 @@ export class DragPaneComponent {
     @Output() dragPaneVResize = new EventEmitter<any>();
 
     onActionMouseDown($event?: any) {
+        event.preventDefault();
         this.dragging = $event.target.offsetParent;
         if (this.dragging) {
             switch (this.direction) {
                 case 'h':
+                    console.log(this.direction)
                     this.diffX = $event.clientX - this.dragging ? this.dragging.offsetLeft : 0;
-                    this.dragPaneVResize.emit({ direction: 'h', value: window.innerWidth - $event.clientX - this.diffX, diff: this.diffX })
+                    this.dragPaneHResize.emit({ direction: 'h', value: $event.clientX - this.diffX, diff: this.diffX })
                     break;
                 case 'v':
                     this.diffY = this.dragging.offsetHeight - ($event.clientY - this.dragging.offsetTop);
-                    this.dragPaneHResize.emit({ direction: 'v', value: window.innerHeight - $event.clientY - this.diffY, diff: this.diffY })
+                    this.dragPaneVResize.emit({ direction: 'v', value: window.innerHeight - $event.clientY - this.diffY, diff: this.diffY })
                     break;
                 default: break;
             }
         }
     }
-
-    // onActionMouseUp($event?: MouseEvent) {
-    //     this.dragging = null;
-    //     console.log('up')
-
-    // }
-    // onActionMouseMove($event?: MouseEvent) {
-    //     if (this.dragging !== null) {
-    //         this.postionStyle = {
-    //             bottom: window.innerHeight - $event.clientY - this.diffY + 'px'
-    //         }
-    //         console.log(this.postionStyle)
-    //     }
-    // }
 
 }

@@ -12,7 +12,18 @@ let tools = {
         let result = Object.assign({}, obj);
         for (let i in result) {
             for (let j in result[i]) {
-                result[i][j] = result[i][j] + 'px';
+                if (typeof result[i][j] == 'number')
+                    result[i][j] = result[i][j] + 'px';
+            }
+        }
+        return result;
+    },
+    px2num: (obj: any) => {
+        let result = Object.assign({}, obj);
+        for (let i in result) {
+            for (let j in result[i]) {
+                if (typeof result[i][j] == 'string')
+                    result[i][j] = +result[i][j].replace('px', '');
             }
         }
         return result;
