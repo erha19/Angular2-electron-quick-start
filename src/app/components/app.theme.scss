@@ -20,3 +20,8 @@ i,
 em {
     display: block;
 }
+
+// Fix for warning with electron - see https://github.com/electron/electron/issues/4420
+ ::selection {
+    background: rgba(255, 255, 125, 0.99);
+}

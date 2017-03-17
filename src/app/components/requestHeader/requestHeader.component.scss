@@ -1,0 +1,73 @@
+.h-container {
+    padding: 0 0 0 4px;
+}
+
+.btn-group {
+    margin-top: 2px;
+}
+
+.buttons {
+    margin-left: -9px;
+}
+
+.btn-link {
+    padding: 0 0 0 8px;
+    color: #666;
+    text-decoration: none;
+}
+
+.set-auth-link {
+    .btn-link {
+        display: flex;
+        align-items: center;
+        font-size: 13px;
+        width: 267px;
+        text-align: left;
+    }
+}
+
+.headers-ui-editor {
+    position: relative;
+    display: flex;
+    align-items: center;
+    label {
+        &.header-b {
+            margin: 0;
+            display: inline;
+            &>input {
+                margin-right: 10px;
+            }
+        }
+    }
+    .expression-input {
+        display: inline-flex;
+        width: 100%;
+        margin-bottom: 0;
+    }
+    .header-name {
+        width: 130px;
+        margin: 1px 2px 1px 3px;
+    }
+    .header-value {
+        width: 150px;
+        margin: 1px 0 1px 2px;
+    }
+}
+
+.btn-link {
+    color: #666;
+    &:hover {
+        color: #666;
+    }
+}
+
+.sub-label {
+    font-size: 13px;
+    font-weight: 100;
+    margin: 0 0 5px 2px;
+    color: #444;
+    text-transform: uppercase;
+    a {
+        color: #444;
+    }
+}

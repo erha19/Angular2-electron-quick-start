@@ -1,0 +1,103 @@
+.sub-label {
+    a {
+        color: #444;
+    }
+}
+
+.b-container {
+    margin: 0 10px 0 3px;
+    table {
+        border-collapse: separate;
+        border-spacing: 2px;
+    }
+}
+
+.file-selector {
+    label {
+        color: #666;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        margin-bottom: 0;
+        font-weight: normal;
+        line-height: 20px;
+    }
+    button {
+        &.btn {
+            min-width: 105px !important;
+        }
+    }
+}
+
+.html-btn-group-r {
+    float: right;
+    padding-right: 1px;
+    margin-top: 1px;
+}
+
+.html-btn-group {
+    float: left;
+    margin-left: -30px;
+}
+
+.html-form-body {
+    width: 100%;
+    tr {
+        margin: 0;
+        padding: 0;
+    }
+    td {
+        font-size: 11px;
+        vertical-align: middle;
+        width: 1px;
+    }
+    .value {
+        width: auto;
+        vertical-align: middle;
+    }
+    .item-value {
+        width: 100%;
+    }
+    .file-value {
+        display: table;
+        table-layout: fixed;
+        label {
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .btn {
+            width: 60px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+    }
+    .checkbox {
+        top: 7px;
+        position: relative;
+        padding: 0;
+    }
+    .expression-input {
+        width: 150px !important;
+    }
+    .item-type {
+        width: 80px;
+    }
+}
+
+.btn-link {
+    color: #666;
+    &:hover {
+        color: #666;
+    }
+}
+
+.sub-label {
+    font-size: 13px;
+    font-weight: 100;
+    margin: 0 0 5px 2px;
+    color: #444;
+    text-transform: uppercase;
+    a {
+        color: #444;
+    }
+}

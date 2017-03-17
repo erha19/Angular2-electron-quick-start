@@ -24,6 +24,10 @@ import { DragPaneComponent } from './ui-components/drag-pane/drag-pane.component
  */
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { RequestBodyComponent } from './components/requestBody/requestBody.component';
+import { RequestHeaderComponent } from './components/requestHeader/requestHeader.component';
+import { RequestPaneComponent } from './components/requestPane/requestPane.component';
+import { ResponsePaneComponent } from './components/responsePane/responsePane.component';
 import { AppComponent } from './components/app.component';
 
 /**
@@ -66,7 +70,11 @@ import { routes } from './app.routes';
         //custom-components
         AppComponent,
         HomeComponent,
-        NavbarComponent
+        NavbarComponent,
+        RequestHeaderComponent,
+        RequestBodyComponent,
+        RequestPaneComponent,
+        ResponsePaneComponent
     ],
     bootstrap: [AppComponent]
 })

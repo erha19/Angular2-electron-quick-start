@@ -1,0 +1,94 @@
+.request-pane {
+    background-color: #fafafa;
+    margin: 0 15px;
+    margin-top: 15px;
+    .pane-head {
+        font-size: 14px;
+        font-weight: 800;
+        margin: 0 0 7px 0;
+        color: #444;
+        text-transform: uppercase;
+        line-height: 20px;
+        padding: 0 0 5px 0;
+        span {
+            padding-left: 1px;
+        }
+    }
+    .pane-content {
+        .service {
+            display: table;
+            width: 100%;
+            .row {
+                display: table-row;
+            }
+            .cell {
+                display: table-cell;
+                width: 1px;
+                white-space: nowrap;
+                padding: 0 2px 0 2px;
+            }
+            .http-method {
+                width: 132px;
+            }
+            .protocol {
+                width: 110px;
+            }
+            .send-button {
+                width: 110px;
+            }
+            .cell-url {
+                display: table-cell;
+                white-space: nowrap;
+                position: relative;
+            }
+        }
+        .request {
+            display: table;
+            width: 100%;
+            margin: 14px 0 0 0;
+            .headers {
+                width: 400px;
+                display: table-cell;
+                white-space: nowrap;
+                padding: 0 0 0 10px;
+            }
+            .btn-link {
+                color: #666;
+                &:hover {
+                    color: #666;
+                }
+            }
+            .sub-label {
+                font-size: 13px;
+                font-weight: 100;
+                margin: 0 0 5px 2px;
+                color: #444;
+                text-transform: uppercase;
+                a {
+                    color: #444;
+                }
+            }
+            // body content
+            .body {
+                display: table-cell;
+                padding: 0 0 0 5px;
+                max-width: 0;
+            }
+        }
+    }
+}
+
+.row {
+    margin-left: -20px;
+    &:before,
+    &:after {
+        display: table;
+        line-height: 0;
+        content: "";
+    }
+}
+
+.pane {
+    min-height: 70px;
+    padding: 15px 10px 10px 10px !important;
+}
