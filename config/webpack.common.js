@@ -6,11 +6,12 @@
 const webpack = require('webpack');
 const helpers = require('./helpers');
 const path = require('path');
+const package = require('../package.json');
 
 const AssetsPlugin = require('assets-webpack-plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
+const GenerateJsonPlugin = require('generate-json-webpack-plugin');
 
 /*
  * Webpack Configuration
@@ -125,9 +126,19 @@ module.exports = function(options) {
             // See: https://www.npmjs.com/package/copy-webpack-plugin
             new CopyWebpackPlugin([
                 { from: 'src/assets', to: 'assets' },
-                { from: 'src/app/package.json', to: isProd ? helpers.rootNode('publish') : helpers.rootNode('dist') },
-                { from: 'src/app/main.js', to: isProd ? helpers.rootNode('publish') : helpers.rootNode('dist') }
-            ])
+                { from: 'src/app/main.js', to: './' }
+            ]),
+            // Plugin: GenerateJsonPlugin
+            // Description: Generate json file in webpack.
+            //
+            // Generate json file.
+            //
+            // See: https://www.npmjs.com/package/generate-json-webpack-plugin
+            new GenerateJsonPlugin('package.json', {
+                name: package.name,
+                version: package.version,
+                main: "main.js"
+            })
         ],
         /*
          * Include polyfills or mocks for various node stuff
