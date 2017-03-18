@@ -2,7 +2,7 @@
     "name": "Eolinker",
     "version": "0.0.1",
     "description": "Eolinker,a profession tool for tesnpm t!",
-    "main": "",
+    "main": "main.js",
     "scripts": {
         "build": "npm run build:dev",
         "build:dev": "set NODE_ENV=development&&webpack --config config/webpack.dev.js --progress --profile",
@@ -24,7 +24,7 @@
         "start:prod": " npm run build:prod && electron publish",
         "start:hmr": "npm run server:dev:hmr",
         "watch:electron": "nodemon --exec \"npm run start\" --ext ts,scss,html --ignore dist/ --ignore publish/",
-        "watch:browser": ""
+        "dist": "build"
     },
     "repository": {
         "type": "git",
@@ -123,5 +123,30 @@
     "engines": {
         "node": ">= 4.2.1 <= 6",
         "npm": ">= 3"
+    },
+    "build": {
+        "appId": "com.eolinker.www",
+        "app-category-type": "public.app-category.productivity",
+        "dmg": {
+            "title": "Eolinker",
+            "background": "build/background.png",
+            "icon": "build/icon.icns",
+            "icon-size": 128,
+            "contents": [{
+                    "x": 355,
+                    "y": 125,
+                    "type": "link",
+                    "path": "/Applications"
+                },
+                {
+                    "x": 155,
+                    "y": 125,
+                    "type": "file"
+                }
+            ]
+        },
+        "win": {
+            "iconUrl": "http://eatodo.s3.amazonaws.com/icon.ico"
+        }
     }
 }

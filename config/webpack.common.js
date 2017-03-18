@@ -6,7 +6,7 @@
 const webpack = require('webpack');
 const helpers = require('./helpers');
 const path = require('path');
-const package = require('../package.json');
+const pkg = require('../package.json');
 
 const AssetsPlugin = require('assets-webpack-plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
@@ -135,8 +135,9 @@ module.exports = function(options) {
             //
             // See: https://www.npmjs.com/package/generate-json-webpack-plugin
             new GenerateJsonPlugin('package.json', {
-                name: package.name,
-                version: package.version,
+                name: pkg.name,
+                version: pkg.version,
+                author: pkg.author,
                 main: "main.js"
             })
         ],

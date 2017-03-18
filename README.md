@@ -1,4 +1,6 @@
-# Angular 2 electron app featuring webpack
+# Angular 2 electron starterkit featuring webpack
+
+This is a starter of angular (2 and above) and electron.Its a working demo of [electron] with [angular] using [Webpack], [ngrx]
 
 [![Build Status](https://travis-ci.org/simplefatty/Angular2-electron-quick-start.svg?branch=master)](https://travis-ci.org/simplefatty/Angular2-electron-quick-start)
 [![dependcy](https://david-dm.org/simplefatty/Angular2-electron-quick-start.svg)](https://david-dm.org/simplefatty/Angular2-electron-quick-start)
@@ -12,28 +14,16 @@ $ npm install
 $ npm start
 ```
 
-You should create a `config.json` in the `src/app` floder.like:
-```
-{
-    "github": {
-        "client_id": "",
-        "client_secret": "",
-        "scopes": [
-            "user:email",
-            "notifications"
-        ]
-    }
-}
-```
+You can also run `npm run server:dev` to start a webpack-dev-server to debug you code on browser.
 
-* When you use Linux or OSX , you need to change the command in `package.json`,just change `set` to `export`.
+When you use Linux or OSX , you need to change the command in `package.json`,just change `set` to `export`.
 
 ## Packaging
 
 The app has support for packaging using 'electron-packager'
 
 ```bash
-$ npm run package
+$ npm run package -- --all
 ```
 
 Will run the package for OSX. You can also provide additional options to the package command such as
