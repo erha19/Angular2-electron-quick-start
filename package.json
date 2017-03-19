@@ -33,8 +33,7 @@
         "private:build:mac": "build --mac",
         "private:build:win": "build --win",
         "private:build:linux": "build --linux",
-        "private:clean": "rimraf build",
-        "build:pck:win64": "build --prepackaged ./release/darwin-all/app-win32-x64"
+        "private:clean": "rimraf build"
     },
     "repository": {
         "type": "git",
