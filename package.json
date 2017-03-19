@@ -1,7 +1,7 @@
 {
     "name": "Eolinker",
     "version": "0.0.1",
-    "description": "Eolinker,a profession tool for tesnpm t!",
+    "description": "Eolinker,a profession tool for test!",
     "main": "init.js",
     "scripts": {
         "postinstall": "install-app-deps",
@@ -134,34 +134,5 @@
     "engines": {
         "node": ">= 4.2.1 <= 6",
         "npm": ">= 3"
-    },
-    "build": {
-        "appId": "org.develar.onshape",
-        "files": [
-            "out",
-            "node_modules"
-        ],
-        "mac": {
-            "category": "public.app-category.graphics-design"
-        },
-        "dmg": {
-            "contents": [{
-                    "x": 110,
-                    "y": 150
-                },
-                {
-                    "x": 240,
-                    "y": 150,
-                    "type": "link",
-                    "path": "/Applications"
-                }
-            ]
-        },
-        "linux": {
-            "target": [
-                "AppImage",
-                "deb"
-            ]
-        }
     }
 }
