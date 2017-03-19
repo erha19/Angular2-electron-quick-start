@@ -1,3 +1,5 @@
+// import redux dev-tool
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 /*
  * Angular Modules
  */
@@ -10,18 +12,28 @@ import { HttpModule } from '@angular/http';
 
 // Setup redux with ngrx
 import { Store, StoreModule } from '@ngrx/store';
-import { authStore, authInitialState } from './store/auth.store';
+import { layoutStore, InitialState } from './reducers';
 
 /**
  * Import our ui components
  */
 import { ActionButtonComponent } from './ui-components/action-button/action-button.component'
+import { DragPaneComponent } from './ui-components/drag-pane/drag-pane.component'
 /**
  * Import our child components
  */
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { RequestBodyComponent } from './components/requestBody/requestBody.component';
+import { RequestHeaderComponent } from './components/requestHeader/requestHeader.component';
+import { RequestPaneComponent } from './components/requestPane/requestPane.component';
+import { ResponsePaneComponent } from './components/responsePane/responsePane.component';
 import { AppComponent } from './components/app.component';
+
+/**
+ *  Import our providers
+ */
+import { LayoutService } from './services/layout.service';
 
 /**
  * Import material UI Components
@@ -40,16 +52,24 @@ import { routes } from './app.routes';
         HttpModule,
         // MaterialModule.forRoot(),
         RouterModule.forRoot(routes, { useHash: true }),
-        StoreModule.provideStore({ authStore }, { authStore: authInitialState }),
+        StoreModule.provideStore({
+            layoutStore
+        }),
+        StoreDevtoolsModule.instrumentOnlyWithExtension()
     ],
-    providers: [],
+    providers: [LayoutService],
     declarations: [
         //ui-components
         ActionButtonComponent,
+        DragPaneComponent,
         //custom-components
         AppComponent,
         HomeComponent,
-        NavbarComponent
+        NavbarComponent,
+        RequestHeaderComponent,
+        RequestBodyComponent,
+        RequestPaneComponent,
+        ResponsePaneComponent
     ],
     bootstrap: [AppComponent]
 })

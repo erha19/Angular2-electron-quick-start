@@ -1,56 +1,129 @@
-<div class="eo-home">
-  <eo-navbar></eo-navbar>
-  <div class="eo-home-container">
-    <div class="eo-left-content">
+<div class="eo-home" (mousemove)="onDragPaneMouseMove($event)" (mouseup)="onDragPaneMouseUp($event)">
+    <eo-navbar></eo-navbar>
+    <div class="eo-home-container">
+        <eo-drag-pane [direction]="'h'" (dragPaneHResize)="onDragPaneResize($event)" [customerPosition]="layoutData.leftSideDividerPosition">
+            <section>
+                <div class="eo-left-content" [ngStyle]="layoutData.leftSidePanePosition">
 
-    </div>
-    <div class="eo-h-divider">
-      <div class="line"></div>
-    </div>
-    <div class="eo-right-content">
-      <div class="request-pane pane">
-        <div class="pane-head">
-          <span>Request</span>
-        </div>
-        <div class="pane-content">
-          <div class="service form-horizontal">
-            <div class="row">
-              <span class="cell protocol"> 
+                </div>
+            </section>
+        </eo-drag-pane>
+        <div class="eo-right-content" [ngStyle]="layoutData.contentPanePosition">
+
+            <!--request-pane-->
+
+            <eo-request-pane>
+                <div class="service form-horizontal">
+                    <div class="row">
+                        <span class="cell protocol"> 
                 <eo-action-button [customerStyle]="{'min-width':'80px','text-align':'left'}" [buttonText]="defaultProtocol.text" type="default" [actions]="protocols" (actionClick)="onProtocolClick($event)"></eo-action-button>
               </span>
-              <span class="cell"> :// </span>
-              <span class="cell-url"> 
+                        <span class="cell"> :// </span>
+                        <span class="cell-url"> 
               <span class="expression-input input-append">
                 <input type="text" class="form-control" placeholder="type an URI">
                 <span class="add-on" title="Expression builder"><i class="icon-magic"></i>
                 </span>
-              </span>
-              </span>
-              <span class="cell"> 
+                        </span>
+                        </span>
+                        <span class="cell"> 
                 <a href="javascript:;" class="btn-link" title="Open Query Editor">
                   ? [0] </a> 
               </span>
-              <span class="cell http-method">
+                        <span class="cell http-method">
               <eo-action-button [customerStyle]="{'min-width':'100px','text-align':'left'}" [buttonText]="defaultMethod.text" type="default" [actions]="methods" (actionClick)="onMethodClick($event)"></eo-action-button>
                 
         </span>
-              <span class="cell send-button"> 
+                        <span class="cell send-button"> 
                 <eo-action-button [customerStyle]="{'min-width':'60px','text-align':'left'}" [buttonText]="'Send'" [actions]="[]" icon="glyphicon glyphicon-send"
                     [type]="'primary'"
     ></eo-action-button>
               </span>
-            </div>
-          </div>
+                    </div>
+                </div>
+                <!--request data body-->
+                <div class="request form-horizontal">
+
+                    <!--request header content-->
+                    <div class="headers">
+                        <eo-request-header></eo-request-header>
+                    </div>
+                    <!--request body content-->
+                    <div class="body body-content">
+                        <eo-request-body></eo-request-body>
+                    </div>
+
+                </div>
+            </eo-request-pane>
+
+
+
+
+            <!--response body-->
+            <eo-response-pane>
+                <div class="content">
+                    <div class="response-status-line response-status-line-error">
+                        <div class="status">
+                            <a href="http://tools.ietf.org/html/rfc7231#section-6.5.6" target="_blank">406 NOT ACCEPTABLE</a>
+                        </div>
+                    </div>
+
+                    <div class="h-container">
+                        <div class="headers">
+                            <div class="sub-label"> <a href="http://tools.ietf.org/html/rfc7230#section-3.2" target="_blank">Headers</a> </div>
+
+                            <div class="h-container">
+                                <table class="form-headers">
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="http://www.w3.org/TR/cors/#access-control-allow-credentials-response-header" target="_blank" class="header-link"><span title="Access-Control-Allow-Credentials">Access-Control-Allow-Credentials:</span></a></td>
+                                            <td></td>
+                                            <td><span title="true">true</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <a href="javascript:;" class="btn sent-headers btn-link"><i class="caret"></i> complete request headers </a>
+                                <!--hidden form headers-->
+                                <div>
+                                    <table class="form-headers">
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="http://tools.ietf.org/html/rfc7231#section-5.3.2" target="_blank" class="header-link"><span title="Accept">Accept:</span></a></td>
+                                                <td></td>
+                                                <td><a class="gwt-Anchor" title="*/*">*/*</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="http://tools.ietf.org/html/rfc7231#section-5.3.5" target="_blank" class="header-link"><span title="Accept-Language">Accept-Language:</span></a></td>
+                                                <td></td>
+                                                <td><a class="gwt-Anchor" title="zh-CN,zh;q=0.8">zh-CN,zh;q=0.8</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="sent-headers-note">Note: <a href="http://www.w3.org/TR/XMLHttpRequest/#dom-xmlhttprequest-setrequestheader" target="_blank">XHR </a> automatically adds headers like Accept, Accept-Language, Cookie, User-Agent, etc. </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="body">
+                        <div class="sub-label"> <a href="http://tools.ietf.org/html/rfc7230#section-3.3" target="_blank">Body</a> </div>
+                        <div class="response-body">
+                            <div class="unknown">No Content</div>
+                        </div>
+                    </div>
+                </div>
+            </eo-response-pane>
+
         </div>
-      </div>
-
+        <eo-drag-pane [direction]="'v'" (dragPaneVResize)="onDragPaneResize($event)" [customerPosition]="layoutData.bottomSideDividerPosition">
+            <section>
+                <div class="eo-pane" [ngStyle]="layoutData.bottomSidePanePosition">
+                    Some Operation Tips!
+                </div>
+            </section>
+        </eo-drag-pane>
     </div>
-    <div class="eo-v-divider">
-      <div class="line"></div>
-    </div>
-
-    <section class="eo-pane">
-
-    </section>
-  </div>
 </div>

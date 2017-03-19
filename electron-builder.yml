@@ -1,0 +1,37 @@
+appId: com.eolinker.www
+copyright: Eolinker co
+productName: Eolinker
+
+asar: true
+
+directories:
+  buildResources: publish/
+  output: build/
+
+files:
+  - package.json
+  - init.js
+  - publish/
+  - node_modules/
+
+dmg:
+  contents:
+    - type: link
+      path: /Applications
+      x: 410
+      y: 150
+    - type: file
+      x: 130
+      y: 150
+
+mac:
+  target: dmg
+  category: public.app-category.tools
+
+win:
+  target: nsis
+
+linux:
+  target:
+    - deb
+    - AppImage

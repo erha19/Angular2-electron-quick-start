@@ -1,0 +1,6 @@
+<div class="eo-divider">
+    <div [ngClass]="{'eo-v-divider': direction=='v', 'eo-h-divider': direction=='h'}" [ngStyle]="customerPosition" (mousedown)="onActionMouseDown($event)">
+        <div class="line"></div>
+    </div>
+    <ng-content select="section"></ng-content>
+</div>

@@ -5,16 +5,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Setup redux with ngrx
 import { Store, StoreModule } from '@ngrx/store';
-import { authStore, authInitialState } from '../../store/auth.store';
+import { LayoutService } from '../../services/layout.service';
+import { layoutStore, InitialState } from '../../reducers';
+
 
 describe('App component', () => {
     beforeEach(() => TestBed.configureTestingModule({
         imports: [
             FormsModule,
             ReactiveFormsModule,
-            StoreModule.provideStore({ authStore }, { authStore: authInitialState }),
+            StoreModule.provideStore({ layoutStore }),
         ],
         providers: [
+            LayoutService,
             HomeComponent,
         ],
     }));
