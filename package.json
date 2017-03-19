@@ -2,8 +2,9 @@
     "name": "Eolinker",
     "version": "0.0.1",
     "description": "Eolinker,a profession tool for tesnpm t!",
-    "main": "main.js",
+    "main": "init.js",
     "scripts": {
+        "postinstall": "install-app-deps",
         "build": "npm run build:dev",
         "build:dev": "set NODE_ENV=development&&webpack --config config/webpack.dev.js --progress --profile",
         "build:prod": "set NODE_ENV=production&&webpack --config config/webpack.prod.js --progress --profile",
@@ -24,7 +25,16 @@
         "start:prod": " npm run build:prod && electron publish",
         "start:hmr": "npm run server:dev:hmr",
         "watch:electron": "nodemon --exec \"npm run start\" --ext ts,scss,html --ignore dist/ --ignore publish/",
-        "dist": "build"
+        "pack": "run-s private:clean build:prod private:build:all",
+        "pack:mac": "run-s private:clean build:prod private:build:mac",
+        "pack:win": "run-s private:clean build:prod private:build:win",
+        "pack:linux": "run-s private:clean build:prod private:build:linux",
+        "private:build:all": "build -mwl",
+        "private:build:mac": "build --mac",
+        "private:build:win": "build --win",
+        "private:build:linux": "build --linux",
+        "private:clean": "rimraf build",
+        "build:pck:win64": "build --prepackaged ./release/darwin-all/app-win32-x64"
     },
     "repository": {
         "type": "git",
@@ -73,6 +83,7 @@
         "assets-webpack-plugin": "^3.5.1",
         "awesome-typescript-loader": "^3.0.0-beta.18",
         "codelyzer": "^2.0.0-beta.2",
+        "cp-cli": "^1.0.2",
         "css-loader": "^0.26.0",
         "electron": "^1.4.3",
         "electron-builder": "^15.6.1",
@@ -96,6 +107,7 @@
         "karma-sourcemap-loader": "^0.3.7",
         "karma-webpack": "1.8.0",
         "node-sass": "^4.5.0",
+        "npm-run-all": "^4.0.2",
         "phantomjs": "^2.1.7",
         "phantomjs-polyfill": "0.0.2",
         "phantomjs-prebuilt": "^2.1.7",
@@ -125,28 +137,32 @@
         "npm": ">= 3"
     },
     "build": {
-        "appId": "com.eolinker.www",
-        "app-category-type": "public.app-category.productivity",
+        "appId": "org.develar.onshape",
+        "files": [
+            "out",
+            "node_modules"
+        ],
+        "mac": {
+            "category": "public.app-category.graphics-design"
+        },
         "dmg": {
-            "title": "Eolinker",
-            "background": "build/background.png",
-            "icon": "build/icon.icns",
-            "icon-size": 128,
             "contents": [{
-                    "x": 355,
-                    "y": 125,
-                    "type": "link",
-                    "path": "/Applications"
+                    "x": 110,
+                    "y": 150
                 },
                 {
-                    "x": 155,
-                    "y": 125,
-                    "type": "file"
+                    "x": 240,
+                    "y": 150,
+                    "type": "link",
+                    "path": "/Applications"
                 }
             ]
         },
-        "win": {
-            "iconUrl": "http://eatodo.s3.amazonaws.com/icon.ico"
+        "linux": {
+            "target": [
+                "AppImage",
+                "deb"
+            ]
         }
     }
 }

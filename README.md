@@ -7,18 +7,40 @@ This is a starter of angular (2 and above) and electron.Its a working demo of [e
 [![dev dependcy](https://david-dm.org/simplefatty/Angular2-electron-quick-start/dev-status.svg)](https://david-dm.org/simplefatty/Angular2-electron-quick-start?type=dev)
 
 ==================
-## Run the example
+## Quick start
 
 ```bash
-$ npm install
-$ npm start
+git clone https://github.com/simplefatty/Angular2-electron-quick-start.git
+```
+Install dependencies
+
+```bash
+cd Angular2-electron-quick-start
+npm install
+```
+Run the example
+```bash
+npm start
 ```
 
+Hot reload on electron
+```bash
+npm run watch:electron
+```
 You can also run `npm run server:dev` to start a webpack-dev-server to debug you code on browser.
+
 
 When you use Linux or OSX , you need to change the command in `package.json`,just change `set` to `export`.
 
-## Packaging
+## DevTools
+
+Toggle DevTools:
+
+* OSX: <kbd>Cmd</kbd> <kbd>Alt</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
+* Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
+* Windows: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
+
+## Packaging(For test)
 
 The app has support for packaging using 'electron-packager'
 
@@ -32,6 +54,30 @@ Will run the package for OSX. You can also provide additional options to the pac
 *  --all : Will packaget the application to all the platforms
 *  --arch : Arches to be provided
 *  --icon : The icon for the app
+
+## Generate Installer
+
+Modify [electron-builder.yml](./electron-builder.yml) to edit package info.
+
+For a full list of options see: https://github.com/electron-userland/electron-builder/wiki/Options.
+
+Create a package for OSX, Windows and Linux
+```
+npm run pack
+```
+
+Or target a specific platform
+```
+npm run pack:mac
+npm run pack:win
+npm run pack:linux
+```
+
+## Tests
+
+```
+npm run test
+```
 
 ## License
 

@@ -1,4 +1,4 @@
-# @joaogarin
+# @simplefatty
 
 # Logs
 logs
@@ -47,10 +47,10 @@ __build__/**
 .webpack.json
 
 
-# public #
-/public
+# Build #
+build
 
-# publish #
+# Publish #
 publish
 
 
