@@ -1,12 +1,11 @@
 # Angular 2 electron starterkit featuring webpack
 
-This is a starter of angular (2 and above) and electron.Its a working demo of [electron] with [angular] using [Webpack], [ngrx]
+This is a starter of angular (2 and above) and electron.Its a working demo （like DHC） of [electron] with [angular] using [Webpack], [ngrx]
 
 [![Build Status](https://travis-ci.org/simplefatty/Angular2-electron-quick-start.svg?branch=master)](https://travis-ci.org/simplefatty/Angular2-electron-quick-start)
 [![dependcy](https://david-dm.org/simplefatty/Angular2-electron-quick-start.svg)](https://david-dm.org/simplefatty/Angular2-electron-quick-start)
 [![dev dependcy](https://david-dm.org/simplefatty/Angular2-electron-quick-start/dev-status.svg)](https://david-dm.org/simplefatty/Angular2-electron-quick-start?type=dev)
 
-==================
 ## Quick start
 
 ```bash
