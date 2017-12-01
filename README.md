@@ -2,14 +2,14 @@
 
 This is a starter of angular (2 and above) and electron.Its a working demo （like DHC） of [electron] with [angular] using [Webpack], [ngrx]
 
-[![Build Status](https://travis-ci.org/simplefatty/Angular2-electron-quick-start.svg?branch=master)](https://travis-ci.org/simplefatty/Angular2-electron-quick-start)
-[![dependcy](https://david-dm.org/simplefatty/Angular2-electron-quick-start.svg)](https://david-dm.org/simplefatty/Angular2-electron-quick-start)
-[![dev dependcy](https://david-dm.org/simplefatty/Angular2-electron-quick-start/dev-status.svg)](https://david-dm.org/simplefatty/Angular2-electron-quick-start?type=dev)
+[![Build Status](https://travis-ci.org/erha19/Angular2-electron-quick-start.svg?branch=master)](https://travis-ci.org/erha19/Angular2-electron-quick-start)
+[![dependcy](https://david-dm.org/erha19/Angular2-electron-quick-start.svg)](https://david-dm.org/erha19/Angular2-electron-quick-start)
+[![dev dependcy](https://david-dm.org/erha19/Angular2-electron-quick-start/dev-status.svg)](https://david-dm.org/erha19/Angular2-electron-quick-start?type=dev)
 
 ## Quick start
 
 ```bash
-git clone https://github.com/simplefatty/Angular2-electron-quick-start.git
+git clone https://github.com/erha19/Angular2-electron-quick-start.git
 ```
 Install dependencies
 
